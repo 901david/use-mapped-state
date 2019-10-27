@@ -11,8 +11,10 @@
     "url": "git+https://github.com/901david/use-mapped-state.git"
   },
   "keywords": [
-    "reac",
-    "hooks"
+    "react",
+    "hooks",
+    "Map",
+    "javascript"
   ],
   "author": "David Hammond",
   "license": "ISC",
