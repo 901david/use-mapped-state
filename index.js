@@ -1,4 +1,4 @@
-import { useState } from "react";
+const { useState } = require("react");
 ​
 const createState = data => {
   const map = new Map();
