@@ -1,6 +1,6 @@
 {
   "name": "react-hooks-usemappedstate",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "useful react hook for managed state",
   "main": "index.js",
   "scripts": {
@@ -22,7 +22,7 @@
     "url": "https://github.com/901david/use-mapped-state/issues"
   },
   "homepage": "https://github.com/901david/use-mapped-state#readme",
-  "dependencies": {
+  "peerDependencies": {
     "react": "^16.11.0"
   }
 }
