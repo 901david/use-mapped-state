@@ -22,7 +22,9 @@
     "url": "https://github.com/901david/use-mapped-state/issues"
   },
   "homepage": "https://github.com/901david/use-mapped-state#readme",
-  "peerDependencies": {
+  "peerDependencies": {},
+  "bundleDependencies": true,
+  "dependencies": {
     "react": "^16.11.0"
   }
 }
