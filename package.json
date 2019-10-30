@@ -21,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/901david/use-mapped-state/issues"
   },
-  "homepage": "https://github.com/901david/use-mapped-state#readme"
+  "homepage": "https://github.com/901david/use-mapped-state#readme",
+  "dependencies": {
+    "react": "^16.11.0"
+  }
 }

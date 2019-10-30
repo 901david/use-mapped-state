@@ -1,4 +1,4 @@
-const useState = require("react").useState;
+const {useState} = require("react");
 ​
 const convertToMap = data => {
   const dataToProcess = Array.isArray(data) ? data : Object.entries(data);
