@@ -1,6 +1,6 @@
 {
   "name": "react-hooks-usemappedstate",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "useful react hook for managed state",
   "main": "index.js",
   "scripts": {

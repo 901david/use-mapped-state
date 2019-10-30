@@ -1,20 +1,16 @@
 const { useState } = require("react");
 ​
-const createState = data => {
+const convertToMap = data => {
+  const dataToProcess = Array.isArray(data) ? data : Object.entries(data);
   const map = new Map();
-  data.map(([key, val]) => {
+  dataToProcess.map(([key, val]) => {
     const [stateVal, stateSetter] = useState(val);
     map.set(key, { [key]: stateVal, stateSetter });
   });
   return map;
 };
-​
 
-const convertToMap = data =>
-  createState(Array.isArray(data) ? data : [...Object.entries(data)]);
-​
-
-export const useMappedState = data => {
+const useMappedState = data => {
   const newMap = convertToMap(data);
   const modifyMappedState = (prop, val) => {
     const data = newMap.get(prop);
@@ -29,3 +25,5 @@ export const useMappedState = data => {
   
   return [returnValues, modifyMappedState];
 };
+
+module.exports = useMappedState;
