@@ -13,23 +13,52 @@ npm install --save react-use-mapped-state
 ## Usage
 
 ```jsx
-import React, { Component } from "react";
+import React from "react";
 
 import { useMappedState } from "react-use-mapped-state";
 
 const Example = () => {
   const [{ title }, valueSetter] = useMappedState({
-    title: "Our first ok title"
+    title: "Our first ok title with object"
   });
   const onoChangeTitle = () => {
-    valueSetter("title", "Our fantastic new title....");
+    valueSetter("title", "Our fantastic new title....with object");
   };
   return (
     <>
-      <div>{example}</div>
+      <div>{title}</div>
       <button onClick={onoChangeTitle}>Change Title</button>
     </>
   );
+};
+
+export default Example;
+};
+```
+
+Can also be used with the array format for creating Maps
+
+```jsx
+import React from "react";
+
+import { useMappedState } from "react-use-mapped-state";
+
+const ExampleTwo = () => {
+  const [{ title }, valueSetter] = useMappedState([
+    ["title", "Our first ok title with array"]
+  ]);
+  const onoChangeTitle = () => {
+    valueSetter("title", "Our fantastic new title....with array");
+  };
+  return (
+    <>
+      <div>{title}</div>
+      <button onClick={onoChangeTitle}>Change Title</button>
+    </>
+  );
+};
+
+export default ExampleTwo;
 };
 ```
 
