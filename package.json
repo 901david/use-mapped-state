@@ -1,6 +1,6 @@
 {
   "name": "react-hooks-usemappedstate",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "description": ">",
   "author": "901david",
   "license": "MIT",
@@ -75,5 +75,15 @@
   "directories": {
     "example": "example"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "keywords": [
+    "react",
+    "hooks",
+    "usemappedstate",
+    "use",
+    "mapped",
+    "state",
+    "managed",
+    "state"
+  ]
 }
