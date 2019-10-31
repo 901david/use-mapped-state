@@ -1,6 +1,6 @@
 # react-use-mapped-state
 
-> 
+>
 
 [![NPM](https://img.shields.io/npm/v/react-use-mapped-state.svg)](https://www.npmjs.com/package/react-use-mapped-state) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
@@ -13,16 +13,24 @@ npm install --save react-use-mapped-state
 ## Usage
 
 ```jsx
-import React, { Component } from 'react'
+import React, { Component } from "react";
 
-import { useMyHook } from 'react-use-mapped-state'
+import { useMappedState } from "react-use-mapped-state";
 
 const Example = () => {
-  const example = useMyHook()
+  const [{ title }, valueSetter] = useMappedState({
+    title: "Our first ok title"
+  });
+  const onoChangeTitle = () => {
+    valueSetter("title", "Our fantastic new title....");
+  };
   return (
-    <div>{example}</div>
-  )
-}
+    <>
+      <div>{example}</div>
+      <button onClick={onoChangeTitle}>Change Title</button>
+    </>
+  );
+};
 ```
 
 ## License

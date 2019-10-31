@@ -10,18 +10,20 @@ const convertToMap = data => {
   return map;
 };
 
-export const useMappedState = data => {
+export const useMappedState = (data, config = {}) => {
   const newMap = convertToMap(data);
   const modifyMappedState = (prop, val) => {
     const data = newMap.get(prop);
     const setter = data.stateSetter;
     setter(val);
   };
-
-  const returnValues = [...newMap.entries()].reduce(
-    (values, [key, val]) => ({ ...values, [key]: val[key] }),
-    {}
-  );
+  const { complexKeysEnabled } = config;
+  const returnValues = complexKeysEnabled
+    ? newMap
+    : [...newMap.entries()].reduce(
+        (values, [key, val]) => ({ ...values, [key]: val[key] }),
+        {}
+      );
 
   return [returnValues, modifyMappedState];
 };

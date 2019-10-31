@@ -1,13 +1,15 @@
 import React from "react";
-import { useMappedState } from "react-use-mapped-state";
+import Example from "./Example";
+import ExampleTwo from "./ExampleTwo";
+import ExampleThree from "./ExampleThree";
 
 const App = () => {
-  const [{ title }, setter] = useMappedState({ title: "hello world" });
-
-  const onClick = () => {
-    setter("title", "It changes!!!!");
-  };
-
-  return <div onClick={onClick}>{title}</div>;
+  return (
+    <div>
+      <Example />
+      <ExampleTwo />
+    </div>
+  );
 };
+
 export default App;
