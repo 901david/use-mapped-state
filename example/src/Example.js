@@ -9,6 +9,7 @@ const Example = () => {
   const onoChangeTitle = () => {
     valueSetter("title", "Our fantastic new title....with object");
   };
+
   return (
     <>
       <div>{title}</div>

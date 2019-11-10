@@ -2,17 +2,17 @@ import React from "react";
 
 import { useMappedState } from "react-use-mapped-state";
 
-const ExampleThree = () => {
-  const someAbstractValue = { prop1: "Hi", prop2: "something else" };
+const ExampleFour = () => {
+  const someAbstractValue = () => ({ prop1: "Hi", prop2: "something else" });
   const [getter, setter] = useMappedState(
-    [[someAbstractValue, "Our first ok title with complex array"]],
+    [[someAbstractValue, "Our first ok title with Function"]],
     { complexKeysEnabled: true }
   );
 
   const title = getter(someAbstractValue);
 
   const onoChangeTitle = () => {
-    setter(someAbstractValue, "Our fantastic new title....with complex array");
+    setter(someAbstractValue, "Our fantastic new title....with Function");
   };
 
   return (
@@ -23,4 +23,4 @@ const ExampleThree = () => {
   );
 };
 
-export default ExampleThree;
+export default ExampleFour;
