@@ -1,4 +1,4 @@
-# react-use-mapped-state
+# react-hooks-usemappedstate
 
 >
 
