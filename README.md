@@ -7,7 +7,7 @@
 ## Install
 
 ```bash
-npm install --save react-use-mapped-state
+npm i react-hooks-usemappedstate
 ```
 
 ## Usage -- Primitive Values

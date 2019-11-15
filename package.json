@@ -1,6 +1,6 @@
 {
   "name": "react-hooks-usemappedstate",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "A react hook that allows you to pass data as an object or an array and it manages state for you using a Map",
   "author": "901david",
   "license": "MIT",
