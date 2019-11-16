@@ -1,6 +1,6 @@
 {
   "name": "react-use-mapped-state",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "A react hook that allows you to pass data as an object or an array and it manages state for you using a Map",
   "author": "901david",
   "license": "MIT",
