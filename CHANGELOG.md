@@ -11,4 +11,8 @@
   - Updates some readme text.
 
 - v. 2.0.2
+
+  - Updates some readme text.
+
+  - v. 2.0.3
   - Updates some readme text.
