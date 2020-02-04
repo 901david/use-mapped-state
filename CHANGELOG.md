@@ -22,5 +22,9 @@
 
   - Updates the roll up config to exclude unnecessary files and decrease bundle size
 
-  - v. 2.0.5
+- v. 2.0.5
+
   - Updates the roll up config
+
+- v. 2.0.6
+  - Finally removed examples from build

@@ -24,16 +24,7 @@ export default {
     external(),
     url({ exclude: ["**/*.svg"] }),
     babel({
-      exclude: [
-        "node_modules/**",
-        "example/*",
-        "src/*",
-        ".babelrc",
-        ".editorconfig",
-        ".eslintrc",
-        ".travis.yml",
-        "rollup.config.js"
-      ]
+      exclude: "node_modules/**"
     }),
     resolve(),
     commonjs()

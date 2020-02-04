@@ -1,8 +1,0 @@
-/node_modules
-/example
-/src
-.babelrc
-.editorconfig
-.eslintrc
-.travis.yml
-rollup.config.js

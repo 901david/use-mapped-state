@@ -1,6 +1,6 @@
 {
   "name": "react-use-mapped-state",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "description": "A react hook that allows you to pass data as an object or an array and it manages state for you using a Map",
   "author": "901david",
   "license": "MIT",
@@ -72,9 +72,6 @@
     "url": "https://github.com/901david/react-use-mapped-state/issues"
   },
   "homepage": "https://github.com/901david/react-use-mapped-state#readme",
-  "directories": {
-    "example": "example"
-  },
   "dependencies": {},
   "keywords": [
     "react",
@@ -85,5 +82,10 @@
     "state",
     "managed",
     "state"
+  ],
+  "files": [
+    "./dist/*",
+    "./CHANGELOG.md",
+    "README.md"
   ]
 }
