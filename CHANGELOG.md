@@ -14,5 +14,7 @@
 
   - Updates some readme text.
 
-  - v. 2.0.3
+- v. 2.0.3
   - Updates some readme text.
+- v. 2.0.4
+  - Updates the roll up config to exclude unnecessary files and decrease bundle size
