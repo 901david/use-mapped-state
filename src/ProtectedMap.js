@@ -28,7 +28,13 @@ class ProtectedMap {
     const map = new Map();
     dataToProcess.map(([key, val]) => {
       const [stateVal, stateSetter] = React.useState(val);
-      map.set(key, new Map([[key, stateVal], ["stateSetter", stateSetter]]));
+      map.set(
+        key,
+        new Map([
+          [key, stateVal],
+          ["stateSetter", stateSetter]
+        ])
+      );
     });
     return map;
   }
