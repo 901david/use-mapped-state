@@ -72,7 +72,9 @@
     "url": "https://github.com/901david/react-use-mapped-state/issues"
   },
   "homepage": "https://github.com/901david/react-use-mapped-state#readme",
-  "dependencies": {},
+  "dependencies": {
+    "@testing-library/react-hooks": "^3.2.1"
+  },
   "keywords": [
     "react",
     "hooks",
