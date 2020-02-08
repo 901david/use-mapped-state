@@ -48,9 +48,11 @@
     "@babel/plugin-syntax-import-meta": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
+    "@testing-library/react": "^9.4.0",
+    "@testing-library/react-hooks": "^3.2.1",
     "babel-eslint": "^10.0.1",
     "cross-env": "^5.2.0",
-    "eslint": "5.16.0",
+    "eslint": "^6.1.0",
     "eslint-config-standard": "^11.0.0",
     "eslint-config-standard-react": "^6.0.0",
     "eslint-plugin-import": "^2.13.0",
@@ -61,6 +63,7 @@
     "gh-pages": "^2.0.1",
     "react": "^16.8.6",
     "react-scripts": "^3.0.1",
+    "react-test-renderer": "^16.8.0",
     "rollup": "^1.1.2",
     "rollup-plugin-babel": "^4.3.2",
     "rollup-plugin-commonjs": "^9.2.0",
@@ -72,9 +75,7 @@
     "url": "https://github.com/901david/react-use-mapped-state/issues"
   },
   "homepage": "https://github.com/901david/react-use-mapped-state#readme",
-  "dependencies": {
-    "@testing-library/react-hooks": "^3.2.1"
-  },
+  "dependencies": {},
   "keywords": [
     "react",
     "hooks",

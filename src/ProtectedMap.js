@@ -52,13 +52,33 @@ class ProtectedMap {
     return undefined;
   }
 
-  setValue(key, val) {
+  setValue(keys, vals) {
+    // const isErrored =
+    //   (Array.isArray(keys) && !Array.isArray(vals)) ||
+    //   (!Array.isArray(keys) && Array.isArray(vals));
+    // if (isErrored)
+    //   throw new Error(
+    //     "To submit a batch request both keys and values must be arrays"
+    //   );
+    // const isBatched = Array.isArray(keys) && Array.isArray(vals);
+    // if (!isBatched) {
+    //   keys = [keys];
+    //   vals = [vals];
+    // }
+    // keys.forEach((key, idx) => {
+    //   if (this.map.has(key)) {
+    //     const innerMap = this.map.get(key);
+    //     const setter = innerMap.get("stateSetter");
+    //     setter(vals[idx]);
+    //   } else {
+    //     throw new Error("Key was not found in the map");
+    //   }
+    // });
     if (this.map.has(key)) {
       const innerMap = this.map.get(key);
       const setter = innerMap.get("stateSetter");
       setter(val);
     }
-    return undefined;
   }
 }
 

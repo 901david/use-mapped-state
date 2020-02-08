@@ -1,5 +1,5 @@
-const { useMappedState } = require("./index");
-const { renderHook, act } = require("@testing-library/react-hooks");
+import { useMappedState } from "./index";
+// import { renderHook, act } from "@testing-library/react-hooks";
 
 describe("UseMappedState", () => {
   describe("Standard Keys", () => {
