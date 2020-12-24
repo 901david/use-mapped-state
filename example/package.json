@@ -5,11 +5,12 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
+    "@bootstrap-styled/v4": "^3.4.0",
     "prop-types": "^15.6.2",
     "react": "file:../node_modules/react",
     "react-dom": "^16.8.6",
     "react-scripts": "^3.0.1",
-    "react-use-mapped-state": "file:.."
+    "styled-components": "^5.2.1"
   },
   "scripts": {
     "start": "react-scripts start",

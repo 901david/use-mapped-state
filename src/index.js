@@ -1,4 +1,4 @@
-import ProtectedMap from "./ProtectedMap";
+const { ProtectedMap } = require("./ProtectedMap");
 
 export const useMappedState = (
   data,
