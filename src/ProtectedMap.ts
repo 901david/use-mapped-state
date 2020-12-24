@@ -22,7 +22,6 @@ export class ProtectedMap {
   constructor(private data: MappedStateEntry) {
     this.map = this.convertToMap(this.data);
     this.modifyMappedState = this.modifyMappedState.bind(this);
-    this.setValue = this.setValue.bind(this);
   }
 
   getReturnValues(): MappedReturnValues {
@@ -63,26 +62,7 @@ export class ProtectedMap {
     return map;
   }
 
-  modifyMappedState(keys: any | [any], vals: any | [any]) {
-    const isBatched = Array.isArray(keys) && Array.isArray(vals);
-    if (!isBatched) {
-      keys = [keys];
-      vals = [vals];
-    }
-
-    keys.forEach((key: string, idx: number) => {
-      if (this.map.has(key)) {
-        const innerMap = this.map.get(key);
-        const setter = innerMap && innerMap.get("stateSetter");
-        if (setter) {
-          const setState = setter as (val: unknown) => void;
-          setState(vals[idx]);
-        } else throw new Error("State Setter not found");
-      } else throw new Error("Key was sot found in the map");
-    });
-  }
-
-  setValue(keys: string | string[], vals: unknown | Array<unknown>) {
+  modifyMappedState(keys: string | [string], vals: unknown | [unknown]) {
     const keysIsArray = Array.isArray(keys);
     const valsIsArray = Array.isArray(vals);
     if ((keysIsArray && !valsIsArray) || (!keysIsArray && valsIsArray))
@@ -101,7 +81,7 @@ export class ProtectedMap {
           const setState = setter as (val: unknown) => void;
           setState(valsToProcess[idx]);
         } else throw new Error("State Setter not found");
-      } else throw new Error("Key not found, check your key name");
+      } else throw new Error("Key was not found in the map");
     });
   }
 }

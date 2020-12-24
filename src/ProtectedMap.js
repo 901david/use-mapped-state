@@ -17,7 +17,6 @@ var ProtectedMap = /** @class */ (function () {
         this.data = data;
         this.map = this.convertToMap(this.data);
         this.modifyMappedState = this.modifyMappedState.bind(this);
-        this.setValue = this.setValue.bind(this);
     }
     ProtectedMap.prototype.getReturnValues = function () {
         var values = Array.from(this.map.entries()).reduce(function (values, _a) {
@@ -53,28 +52,6 @@ var ProtectedMap = /** @class */ (function () {
     };
     ProtectedMap.prototype.modifyMappedState = function (keys, vals) {
         var _this = this;
-        var isBatched = Array.isArray(keys) && Array.isArray(vals);
-        if (!isBatched) {
-            keys = [keys];
-            vals = [vals];
-        }
-        keys.forEach(function (key, idx) {
-            if (_this.map.has(key)) {
-                var innerMap = _this.map.get(key);
-                var setter = innerMap && innerMap.get("stateSetter");
-                if (setter) {
-                    var setState = setter;
-                    setState(vals[idx]);
-                }
-                else
-                    throw new Error("State Setter not found");
-            }
-            else
-                throw new Error("Key was sot found in the map");
-        });
-    };
-    ProtectedMap.prototype.setValue = function (keys, vals) {
-        var _this = this;
         var keysIsArray = Array.isArray(keys);
         var valsIsArray = Array.isArray(vals);
         if ((keysIsArray && !valsIsArray) || (!keysIsArray && valsIsArray))
@@ -94,7 +71,7 @@ var ProtectedMap = /** @class */ (function () {
                     throw new Error("State Setter not found");
             }
             else
-                throw new Error("Key not found, check your key name");
+                throw new Error("Key was not found in the map");
         });
     };
     return ProtectedMap;
