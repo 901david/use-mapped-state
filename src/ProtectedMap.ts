@@ -7,15 +7,10 @@ export type MappedStateEntry = Array<
 >;
 export type valueSetter = (
   reference: string | string[],
-  value: any | any[]
+  value: unknown | unknown[]
 ) => void;
 
-export type MappedReturnValues = [any, valueSetter];
-
-export type ComplexMappedReturnedValues = [
-  (key: any) => Map<any, any>,
-  (keys: any, vals: any) => void
-];
+export type MappedReturnValues = [{ [key: string]: unknown }, valueSetter];
 
 export type useMappedState = (
   stateValues: MappedStateEntry
@@ -30,7 +25,7 @@ export class ProtectedMap {
     this.setValue = this.setValue.bind(this);
   }
 
-  getReturnValues(): MappedReturnValues | ComplexMappedReturnedValues {
+  getReturnValues(): MappedReturnValues {
     const values = Array.from(this.map.entries()).reduce(
       (values, [key, map]) => {
         return { ...values, [key]: map.get(key) };
