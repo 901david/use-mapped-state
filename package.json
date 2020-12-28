@@ -21,8 +21,7 @@
     "build": "rollup -c",
     "start": "rollup -c -w",
     "prepare": "npm run build",
-    "predeploy": "cd example && npm install && npm run build",
-    "deploy": "gh-pages -d example/build"
+    "tsc:dev": "tsc  src/ProtectedMap.ts --watch"
   },
   "peerDependencies": {
     "react": "^16.8.6"
@@ -75,7 +74,6 @@
     "url": "https://github.com/901david/react-use-mapped-state/issues"
   },
   "homepage": "https://github.com/901david/react-use-mapped-state#readme",
-  "dependencies": {},
   "keywords": [
     "react",
     "hooks",
@@ -87,8 +85,13 @@
     "state"
   ],
   "files": [
-    "./dist/*",
-    "./CHANGELOG.md",
-    "README.md"
-  ]
+    "/dist/index.js",
+    "/dist/index.d.ts",
+    "/dist/ProtectedMap.d.ts",
+    "/CHANGELOG.md",
+    "/README.md"
+  ],
+  "dependencies": {
+    "@types/react": "^16.9.19"
+  }
 }
