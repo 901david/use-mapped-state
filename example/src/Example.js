@@ -1,20 +1,54 @@
-import React, { useState } from "react";
+import React from "react";
+import {
+  Container,
+  Row,
+  Col,
+  Button,
+  Form,
+  FormGroup,
+  Label,
+  Input,
+} from "@bootstrap-styled/v4";
 
 import { useMappedState } from "react-use-mapped-state";
 
-const Example = () => {
-  const [{ title }, valueSetter] = useMappedState({
-    title: "Our first ok title with object"
-  });
-  const onoChangeTitle = () => {
-    valueSetter("title", "Our fantastic new title....with object");
-  };
+const startingState = [
+  ["isDisabled", true],
+  ["currentTodo", ""],
+];
 
+const Example = () => {
+  const [{ isDisabled }, setState] = useMappedState(startingState);
+
+  const handleTodoChange = (evt) => {
+    const { value: userEnteredTodo } = evt.target;
+    const shouldBeDisabled = !userEnteredTodo;
+    setState(
+      ["currentTodo", "isDisabled"],
+      [userEnteredTodo, shouldBeDisabled]
+    );
+  };
+  console.log("isDisabled", isDisabled);
   return (
-    <>
-      <div>{title}</div>
-      <button onClick={onoChangeTitle}>Change Title</button>
-    </>
+    <Container>
+      <Row>
+        <Col>
+          <Form>
+            <FormGroup>
+              <Label htmlFor="add-todo" />
+              <Input
+                onChange={handleTodoChange}
+                id="add-todo"
+                placeholder="Add todo here"
+              />
+            </FormGroup>
+          </Form>
+          <Button disabled={isDisabled} color="primary">
+            Add Todo
+          </Button>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 

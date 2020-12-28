@@ -11,10 +11,11 @@ var ProtectedMap = /** @class */ (function () {
     }
     ProtectedMap.prototype.getReturnValues = function () {
         var values = {};
-        for (var _i = 0, _a = this.map.entries(); _i < _a.length; _i++) {
-            var _b = _a[_i], key = _b[0], map = _b[1];
+        Array.from(this.map.entries()).forEach(function (data) {
+            console.log(data);
+            var key = data[0], map = data[1];
             values[key] = map.get(key);
-        }
+        });
         return [values, this.modifyMappedState];
     };
     ProtectedMap.prototype.convertToMap = function (data) {
@@ -46,10 +47,10 @@ var ProtectedMap = /** @class */ (function () {
                     setter(vals[idx]);
                 }
                 else
-                    throw new Error("State Setter not found");
+                    throw new Error("State Setter not found for key " + key);
             }
             else
-                throw new Error("Key was not found in the map");
+                throw new Error("Key was not found in the map for key " + key);
         });
     };
     ProtectedMap.prototype.getValue = function (key) {
@@ -59,7 +60,7 @@ var ProtectedMap = /** @class */ (function () {
                 return stateMap.get(key);
         }
         else
-            throw new Error("Key not found, check your key name");
+            throw new Error("Key not found, check your key name for " + key);
     };
     return ProtectedMap;
 }());
