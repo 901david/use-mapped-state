@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from 'react';
 
 export type MappedStateEntry = Array<[string, unknown]>;
 export type valueSetter = (
@@ -33,7 +33,7 @@ export class ProtectedMap {
 
   convertToMap(data: MappedStateEntry) {
     if (!Array.isArray(data))
-      throw new Error("Intial State format must be [[key, initialState]]");
+      throw new Error('Intial State format must be [[key, initialState]]');
     const map = new Map();
 
     data.map(([key, val]) => {
@@ -42,7 +42,7 @@ export class ProtectedMap {
         key,
         new Map([
           [key, stateVal],
-          ["stateSetter", stateSetter],
+          ['stateSetter', stateSetter],
         ])
       );
     });
@@ -59,8 +59,9 @@ export class ProtectedMap {
     keys.forEach((key: string, idx: number) => {
       if (this.map.has(key)) {
         const innerMap = this.map.get(key);
-        const setter = innerMap && innerMap.get("stateSetter");
+        const setter = innerMap && innerMap.get('stateSetter');
         if (setter) {
+          console.log(vals[idx]);
           (setter as (key: string) => void)(vals[idx]);
         } else throw new Error(`State Setter not found for key ${key}`);
       } else throw new Error(`Key was not found in the map for key ${key}`);

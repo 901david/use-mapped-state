@@ -20,14 +20,14 @@ var ProtectedMap = /** @class */ (function () {
     };
     ProtectedMap.prototype.convertToMap = function (data) {
         if (!Array.isArray(data))
-            throw new Error("Intial State format must be [[key, initialState]]");
+            throw new Error('Intial State format must be [[key, initialState]]');
         var map = new Map();
         data.map(function (_a) {
             var key = _a[0], val = _a[1];
             var _b = React.useState(val), stateVal = _b[0], stateSetter = _b[1];
             map.set(key, new Map([
                 [key, stateVal],
-                ["stateSetter", stateSetter],
+                ['stateSetter', stateSetter],
             ]));
         });
         return map;
@@ -42,8 +42,9 @@ var ProtectedMap = /** @class */ (function () {
         keys.forEach(function (key, idx) {
             if (_this.map.has(key)) {
                 var innerMap = _this.map.get(key);
-                var setter = innerMap && innerMap.get("stateSetter");
+                var setter = innerMap && innerMap.get('stateSetter');
                 if (setter) {
+                    console.log(vals[idx]);
                     setter(vals[idx]);
                 }
                 else

@@ -1,11 +1,13 @@
 {
   "name": "react-use-mapped-state-example",
-  "homepage": "https://901david.github.io/react-use-mapped-state",
   "version": "0.0.0",
   "license": "MIT",
   "private": true,
   "dependencies": {
     "@bootstrap-styled/v4": "^3.4.0",
+    "@fortawesome/fontawesome-svg-core": "^1.2.32",
+    "@fortawesome/free-solid-svg-icons": "^5.15.1",
+    "@fortawesome/react-fontawesome": "^0.1.14",
     "prop-types": "^15.6.2",
     "react": "file:../node_modules/react",
     "react-dom": "^16.8.6",
