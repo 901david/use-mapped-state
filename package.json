@@ -1,6 +1,6 @@
 {
   "name": "react-use-mapped-state",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "A react hook that manages useState calls for you",
   "author": "901david",
   "license": "MIT",
@@ -69,7 +69,10 @@
     "rollup-plugin-copy": "^3.3.0",
     "rollup-plugin-node-resolve": "^4.0.0",
     "rollup-plugin-peer-deps-external": "^2.2.0",
-    "rollup-plugin-url": "^2.1.0"
+    "rollup-plugin-url": "^2.1.0",
+    "@types/react": "^16.9.19",
+    "rollup-plugin-typescript2": "^0.29.0",
+    "typescript": "^4.1.3"
   },
   "bugs": {
     "url": "https://github.com/901david/react-use-mapped-state/issues"
@@ -94,10 +97,5 @@
     "/dist/ProtectedMap.d.ts",
     "/CHANGELOG.md",
     "/README.md"
-  ],
-  "dependencies": {
-    "@types/react": "^16.9.19",
-    "rollup-plugin-typescript2": "^0.29.0",
-    "typescript": "^4.1.3"
-  }
+  ]
 }

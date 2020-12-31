@@ -61,8 +61,12 @@
   - Correct bad link to issues and github
 
 - v. 4.0.0 **_BREAKING CHANGES_**
+
   - Removes abstract keys feature
   - Adds in better typings support by switching many any typings to unknown, and without abstract keys support the overall typing becomes much more simpler
   - Updates the API to no longer support object based initial state. This is because, the library previously used Object.entries() which can possibly not be executed in the eact same order, which is a requirement of Hooks API. This change eliminates bugs around using integers as keys mixed with strings, and the order of excecution not as expected. To eliminate any confusion, we have moved solely to "Map" format, `[[key, value]]` which will guarantee order of calls.
   - Updates example to be more complex and use much more state than the simple example
   - Adds in a suite of tests to cover the Example, which ends up covering the custom hook itself
+
+- v. 4.0.1
+  - updates dependencies to be all dev dependencies
