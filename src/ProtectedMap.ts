@@ -12,7 +12,7 @@ export type useMappedState = (
   stateValues: MappedStateEntry
 ) => MappedReturnValues;
 
-export class ProtectedMap {
+class ProtectedMap {
   private map: Map<string, Map<string, unknown>>;
 
   constructor(private data: MappedStateEntry) {
@@ -23,11 +23,12 @@ export class ProtectedMap {
 
   getReturnValues(): MappedReturnValues {
     const values: { [key: string]: unknown } = {};
-    Array.from(this.map.entries()).forEach((data: Map<string, unknown>) => {
-      console.log(data);
-      const [key, map] = data;
-      values[key] = map.get(key);
-    });
+    Array.from(this.map.entries()).forEach(
+      (data: [string, Map<string, unknown>]) => {
+        const [key, map] = data;
+        values[key] = map.get(key);
+      }
+    );
     return [values, this.modifyMappedState];
   }
 
@@ -61,7 +62,6 @@ export class ProtectedMap {
         const innerMap = this.map.get(key);
         const setter = innerMap && innerMap.get('stateSetter');
         if (setter) {
-          console.log(vals[idx]);
           (setter as (key: string) => void)(vals[idx]);
         } else throw new Error(`State Setter not found for key ${key}`);
       } else throw new Error(`Key was not found in the map for key ${key}`);
@@ -75,3 +75,5 @@ export class ProtectedMap {
     } else throw new Error(`Key not found, check your key name for ${key}`);
   }
 }
+
+export default ProtectedMap;

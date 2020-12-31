@@ -1,4 +1,4 @@
-import { ProtectedMap } from "./ProtectedMap";
+import ProtectedMap from './ProtectedMap.js';
 export const useMappedState = (
   data,
   config = { complexKeysEnabled: false }

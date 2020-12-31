@@ -1,6 +1,21 @@
 "use strict";
+var __read = (this && this.__read) || function (o, n) {
+    var m = typeof Symbol === "function" && o[Symbol.iterator];
+    if (!m) return o;
+    var i = m.call(o), r, ar = [], e;
+    try {
+        while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
+    }
+    catch (error) { e = { error: error }; }
+    finally {
+        try {
+            if (r && !r.done && (m = i["return"])) m.call(i);
+        }
+        finally { if (e) throw e.error; }
+    }
+    return ar;
+};
 exports.__esModule = true;
-exports.ProtectedMap = void 0;
 var React = require("react");
 var ProtectedMap = /** @class */ (function () {
     function ProtectedMap(data) {
@@ -12,8 +27,7 @@ var ProtectedMap = /** @class */ (function () {
     ProtectedMap.prototype.getReturnValues = function () {
         var values = {};
         Array.from(this.map.entries()).forEach(function (data) {
-            console.log(data);
-            var key = data[0], map = data[1];
+            var _a = __read(data, 2), key = _a[0], map = _a[1];
             values[key] = map.get(key);
         });
         return [values, this.modifyMappedState];
@@ -23,8 +37,8 @@ var ProtectedMap = /** @class */ (function () {
             throw new Error('Intial State format must be [[key, initialState]]');
         var map = new Map();
         data.map(function (_a) {
-            var key = _a[0], val = _a[1];
-            var _b = React.useState(val), stateVal = _b[0], stateSetter = _b[1];
+            var _b = __read(_a, 2), key = _b[0], val = _b[1];
+            var _c = __read(React.useState(val), 2), stateVal = _c[0], stateSetter = _c[1];
             map.set(key, new Map([
                 [key, stateVal],
                 ['stateSetter', stateSetter],
@@ -44,7 +58,6 @@ var ProtectedMap = /** @class */ (function () {
                 var innerMap = _this.map.get(key);
                 var setter = innerMap && innerMap.get('stateSetter');
                 if (setter) {
-                    console.log(vals[idx]);
                     setter(vals[idx]);
                 }
                 else
@@ -65,4 +78,4 @@ var ProtectedMap = /** @class */ (function () {
     };
     return ProtectedMap;
 }());
-exports.ProtectedMap = ProtectedMap;
+exports["default"] = ProtectedMap;

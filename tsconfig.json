@@ -5,7 +5,7 @@
     "declaration": true,
     "outDir": "./dist",
     "strict": true,
-    "downlevelIteration": false,
+    "downlevelIteration": true,
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,

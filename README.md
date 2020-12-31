@@ -10,24 +10,24 @@
 npm i react-use-mapped-state
 ```
 
-## Usage -- Primitive Values
+## Usage -- Basic
 
 ```jsx
-import React from "react";
+import React from 'react';
 
-import { useMappedState } from "react-use-mapped-state";
+import { useMappedState } from 'react-use-mapped-state';
 
 const Example = () => {
-  const [{ title }, valueSetter] = useMappedState({
-    title: "Our first ok title with object"
-  });
-  const onoChangeTitle = () => {
-    valueSetter("title", "Our fantastic new title....with object");
+  const [{ title }, setState] = useMappedState([
+    ['title', 'Our first ok title with object'],
+  ]);
+  const onChangeTitle = () => {
+    setState('title', 'Our fantastic new title....with object');
   };
   return (
     <>
       <div>{title}</div>
-      <button onClick={onoChangeTitle}>Change Title</button>
+      <button onClick={onChangeTitle}>Change Title</button>
     </>
   );
 };
@@ -35,91 +35,87 @@ const Example = () => {
 export default Example;
 ```
 
-Can also be used with the array format for creating Maps
+## Usage -- Basic with previousValues using function
 
 ```jsx
-import React from "react";
+import React from 'react';
 
-import { useMappedState } from "react-use-mapped-state";
+import { useMappedState } from 'react-use-mapped-state';
 
-const ExampleTwo = () => {
-  const [{ title }, valueSetter] = useMappedState([
-    ["title", "Our first ok title with array"]
+const Example = () => {
+  const [{ counter }, setState] = useMappedState([['counter', 1]]);
+  const onIncremenet = () => {
+    setState('counter', prevVal => prevVal + 1);
+  };
+  return (
+    <>
+      <div>{counter}</div>
+      <button onClick={onIncremenet}>Click to Increment</button>
+    </>
+  );
+};
+
+export default Example;
+```
+
+## Usage -- Basic - with Batching
+
+```jsx
+import React from 'react';
+
+import { useMappedState } from 'react-use-mapped-state';
+
+const Example = () => {
+  const [{ title }, setState] = useMappedState([
+    ['title', 'Our first ok title with object'],
+    ['hasTitleChanged', false],
   ]);
-  const onoChangeTitle = () => {
-    valueSetter("title", "Our fantastic new title....with array");
+  const onChangeTitle = () => {
+    setState(
+      ['title', hasTitleChanged],
+      ['Our fantastic new title....with object', true]
+    );
   };
   return (
     <>
       <div>{title}</div>
-      <button onClick={onoChangeTitle}>Change Title</button>
+      <div>Has title Ever been changed? {hasTitleChanged}</div>
+      <button onClick={onChangeTitle}>Change Title</button>
     </>
   );
 };
 
-export default ExampleTwo;
+export default Example;
 ```
 
-## Usage -- Abstract Values
+## Usage -- Basic with previousValues using function with batching
 
 ```jsx
-import React from "react";
+import React from 'react';
 
-import { useMappedState } from "react-use-mapped-state";
+import { useMappedState } from 'react-use-mapped-state';
 
-const ExampleThree = () => {
-  const someAbstractValue = { prop1: "Hi", prop2: "something else" };
-  const [getter, setter] = useMappedState(
-    [[someAbstractValue, "Our first ok title with complex array"]],
-    { complexKeysEnabled: true }
-  );
-
-  const title = getter(someAbstractValue);
-
-  const onoChangeTitle = () => {
-    setter(someAbstractValue, "Our fantastic new title....with complex array");
+const Example = () => {
+  const [{ counter }, setState] = useMappedState([
+    ['counter', 1],
+    ['hasCounterBeenClicked', false],
+  ]);
+  const onIncremenet = () => {
+    setState(
+      ['counter', 'hasCounterBeenClicked'],
+      [prevVal => prevVal + 1, true]
+    );
   };
-
   return (
     <>
-      <div>{title}</div>
-      <button onClick={onoChangeTitle}>Change Title</button>
+      <div>{counter}</div>
+      <div>Has Counter Been Clicked? {hasCounterBeenClicked}</div>
+      <button onClick={onIncremenet}>Click to Increment</button>
     </>
   );
 };
 
-export default ExampleThree;
-```
-
-Can also be used with the array format for creating Maps
-
-```jsx
-import React from "react";
-
-import { useMappedState } from "react-use-mapped-state";
-
-const ExampleFour = () => {
-  const someAbstractValue = () => ({ prop1: "Hi", prop2: "something else" });
-  const [getter, setter] = useMappedState(
-    [[someAbstractValue, "Our first ok title with Function"]],
-    { complexKeysEnabled: true }
-  );
-
-  const title = getter(someAbstractValue);
-
-  const onoChangeTitle = () => {
-    setter(someAbstractValue, "Our fantastic new title....with Function");
-  };
-
-  return (
-    <>
-      <div>{title}</div>
-      <button onClick={onoChangeTitle}>Change Title</button>
-    </>
-  );
-};
-
-export default ExampleFour;
+export default Example;
 ```
 
 ## License

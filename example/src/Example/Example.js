@@ -1,44 +1,41 @@
 import React from 'react';
-import {
-  Container,
-  Row,
-  Col,
-  Button,
-  Form,
-  FormGroup,
-  Label,
-  Input,
-  CardDeck,
-} from '@bootstrap-styled/v4';
+import { Container } from '@bootstrap-styled/v4';
 
 import { useMappedState } from 'react-use-mapped-state';
 import { TodoCard } from './Card';
 import { CardContainer } from './styled-components';
+import { TodoInput } from './todoInput';
+
+const getUUID = () => {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+    var r = (Math.random() * 16) | 0,
+      v = c == 'x' ? r : (r & 0x3) | 0x8;
+    return v.toString(16);
+  });
+};
 
 const startingState = [
-  ['isDisabled', true],
-  ['currentTodo', ''],
-  ['todos', [{ title: 'Test Todo', isCompleted: false }]],
+  [
+    'todos',
+    [
+      { title: 'Get Groceries', isCompleted: false, id: getUUID() },
+      { title: 'Take out trash', isCompleted: true, id: getUUID() },
+      {
+        title: 'Publish new version of project',
+        isCompleted: false,
+        id: getUUID(),
+      },
+    ],
+  ],
 ];
 
 const Example = () => {
-  const [{ isDisabled, todos, currentTodo }, setState] = useMappedState(
-    startingState
-  );
+  const [{ todos }, setState] = useMappedState(startingState);
 
-  const handleTodoChange = evt => {
-    const { value: userEnteredTodo } = evt.target;
-    const shouldBeDisabled = !userEnteredTodo;
-    setState(
-      ['currentTodo', 'isDisabled'],
-      [userEnteredTodo, shouldBeDisabled]
-    );
-  };
-
-  const addCard = () => {
+  const addTodo = title => {
     setState(
       'todos',
-      [{ title: currentTodo, isCompleted: false }].concat([...todos])
+      [{ title, isCompleted: false, id: getUUID() }].concat([...todos])
     );
   };
 
@@ -55,43 +52,41 @@ const Example = () => {
     setState('todos', newTodos);
   };
 
+  const editTodo = (id, title) => {
+    setState('todos', prevTodos => {
+      const toEditIdx = prevTodos.findIndex(t => t.id === id);
+      const copyTodos = [...prevTodos];
+      copyTodos.splice(toEditIdx, 1, { ...prevTodos[toEditIdx], title });
+      return copyTodos;
+    });
+  };
+  const deleteTodo = id => {
+    setState('todos', prevTodos => {
+      const toRemoveIdx = prevTodos.findIndex(t => t.id === id);
+      const copyTodos = [...prevTodos];
+      copyTodos.splice(toRemoveIdx, 1);
+      return copyTodos;
+    });
+  };
+
   return (
     <>
       <Container>
-        <Row>
-          <Col>
-            <Form>
-              <FormGroup>
-                <Label htmlFor='add-todo' />
-                <Input
-                  value={currentTodo}
-                  onChange={handleTodoChange}
-                  id='add-todo'
-                  placeholder='Add todo here'
-                />
-              </FormGroup>
-            </Form>
-            <Button disabled={isDisabled} onClick={addCard} color='primary'>
-              Add Todo
-            </Button>
-          </Col>
-        </Row>
+        <TodoInput isEditing={false} onSubmit={addTodo} />
       </Container>
       <CardContainer>
-        <Row>
-          <CardDeck>
-            {todos.map((todo, idx) => {
-              return (
-                <TodoCard
-                  key={idx}
-                  index={idx}
-                  assignCompleteStatus={modifyCompletedState}
-                  {...todo}
-                />
-              );
-            })}
-          </CardDeck>
-        </Row>
+        {todos.map((todo, idx) => {
+          return (
+            <TodoCard
+              key={idx}
+              index={idx}
+              editTodo={editTodo}
+              deleteTodo={deleteTodo}
+              assignCompleteStatus={modifyCompletedState}
+              {...todo}
+            />
+          );
+        })}
       </CardContainer>
     </>
   );

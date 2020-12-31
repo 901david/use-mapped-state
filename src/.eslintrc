@@ -1,7 +1,0 @@
-{
-  "env": {
-    "jest": true
-  },
-  "singlequote": true,
-  "trailingcomma": false
-}
