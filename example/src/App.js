@@ -1,18 +1,8 @@
-import React from "react";
-import Example from "./Example";
-import ExampleTwo from "./ExampleTwo";
-import ExampleThree from "./ExampleThree";
-import ExampleFour from "./ExampleFour";
+import React from 'react';
+import Example from './Example/Example';
 
 const App = () => {
-  return (
-    <div>
-      <Example />
-      {/* <ExampleTwo />
-      <ExampleThree />
-      <ExampleFour /> */}
-    </div>
-  );
+  return <Example />;
 };
 
 export default App;

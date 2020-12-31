@@ -1,7 +1,7 @@
 {
   "name": "react-use-mapped-state",
-  "version": "2.0.6",
-  "description": "A react hook that allows you to pass data as an object or an array and it manages state for you using a Map",
+  "version": "4.0.0",
+  "description": "A react hook that manages useState calls for you",
   "author": "901david",
   "license": "MIT",
   "repository": {
@@ -21,8 +21,7 @@
     "build": "rollup -c",
     "start": "rollup -c -w",
     "prepare": "npm run build",
-    "predeploy": "cd example && npm install && npm run build",
-    "deploy": "gh-pages -d example/build"
+    "tsc:dev": "tsc  src/ProtectedMap.ts --watch --downlevelIteration"
   },
   "peerDependencies": {
     "react": "^16.8.6"
@@ -50,7 +49,7 @@
     "@babel/preset-react": "^7.0.0",
     "@testing-library/react": "^9.4.0",
     "@testing-library/react-hooks": "^3.2.1",
-    "babel-eslint": "^10.0.1",
+    "babel-eslint": "^10.0.3",
     "cross-env": "^5.2.0",
     "eslint": "^6.1.0",
     "eslint-config-standard": "^11.0.0",
@@ -67,6 +66,7 @@
     "rollup": "^1.1.2",
     "rollup-plugin-babel": "^4.3.2",
     "rollup-plugin-commonjs": "^9.2.0",
+    "rollup-plugin-copy": "^3.3.0",
     "rollup-plugin-node-resolve": "^4.0.0",
     "rollup-plugin-peer-deps-external": "^2.2.0",
     "rollup-plugin-url": "^2.1.0"
@@ -75,7 +75,6 @@
     "url": "https://github.com/901david/react-use-mapped-state/issues"
   },
   "homepage": "https://github.com/901david/react-use-mapped-state#readme",
-  "dependencies": {},
   "keywords": [
     "react",
     "hooks",
@@ -87,8 +86,18 @@
     "state"
   ],
   "files": [
-    "./dist/*",
-    "./CHANGELOG.md",
-    "README.md"
-  ]
+    "/dist/index.js",
+    "/dist/index.es.js",
+    "/dist/index.es.js.map",
+    "/dist/index.js.map",
+    "/dist/index.d.ts",
+    "/dist/ProtectedMap.d.ts",
+    "/CHANGELOG.md",
+    "/README.md"
+  ],
+  "dependencies": {
+    "@types/react": "^16.9.19",
+    "rollup-plugin-typescript2": "^0.29.0",
+    "typescript": "^4.1.3"
+  }
 }

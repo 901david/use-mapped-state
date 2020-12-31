@@ -1,20 +1,27 @@
 {
   "name": "react-use-mapped-state-example",
-  "homepage": "https://901david.github.io/react-use-mapped-state",
   "version": "0.0.0",
   "license": "MIT",
   "private": true,
   "dependencies": {
+    "@babel/core": "^7.12.10",
+    "@bootstrap-styled/v4": "^3.4.0",
+    "@fortawesome/fontawesome-svg-core": "^1.2.32",
+    "@fortawesome/free-solid-svg-icons": "^5.15.1",
+    "@fortawesome/react-fontawesome": "^0.1.14",
+    "babel-jest": "^26.6.3",
+    "jest": "^26.6.3",
     "prop-types": "^15.6.2",
     "react": "file:../node_modules/react",
     "react-dom": "^16.8.6",
     "react-scripts": "^3.0.1",
-    "react-use-mapped-state": "file:.."
+    "styled-components": "^5.2.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "jest",
+    "test:w": "jest --watch",
     "eject": "react-scripts eject"
   },
   "browserslist": [
@@ -22,5 +29,12 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "@babel/preset-env": "^7.12.11",
+    "@babel/preset-react": "^7.12.10",
+    "@testing-library/jest-dom": "^5.11.8",
+    "@testing-library/react": "^11.2.2",
+    "@testing-library/user-event": "^12.6.0"
+  }
 }
