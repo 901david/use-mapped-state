@@ -1,6 +1,6 @@
 {
   "name": "react-use-mapped-state",
-  "version": "4.0.1",
+  "version": "4.0.2",
   "description": "A react hook that manages useState calls for you",
   "author": "901david",
   "license": "MIT",

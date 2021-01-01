@@ -69,4 +69,8 @@
   - Adds in a suite of tests to cover the Example, which ends up covering the custom hook itself
 
 - v. 4.0.1
+
   - updates dependencies to be all dev dependencies
+
+- v. 4.0.2
+  - updates typings for better typescript experience
