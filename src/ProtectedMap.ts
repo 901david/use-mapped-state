@@ -1,19 +1,24 @@
 import * as React from 'react';
 
-export type MappedStateEntry = Array<[string, unknown]>;
+export type MappedStateEntry = Array<[string, any]>;
 export type valueSetter = (
   reference: string | string[],
-  value: unknown | unknown[]
+  value: any | any[]
 ) => void;
 
-export type MappedReturnValues = [{ [key: string]: unknown }, valueSetter];
+export type MappedStateValues = { [key: string]: any };
+
+export type MappedReturnValues = [MappedStateValues, valueSetter];
+export type MappedStateInnerMap = Map<string, any>;
+export type MappedStateMap = Map<string, MappedStateInnerMap>;
+export type MappedStateMapEntry = [string, MappedStateInnerMap];
 
 export type useMappedState = (
   stateValues: MappedStateEntry
 ) => MappedReturnValues;
 
 class ProtectedMap {
-  private map: Map<string, Map<string, unknown>>;
+  private map: MappedStateMap;
 
   constructor(private data: MappedStateEntry) {
     this.map = this.convertToMap(this.data);
@@ -22,13 +27,11 @@ class ProtectedMap {
   }
 
   getReturnValues(): MappedReturnValues {
-    const values: { [key: string]: unknown } = {};
-    Array.from(this.map.entries()).forEach(
-      (data: [string, Map<string, unknown>]) => {
-        const [key, map] = data;
-        values[key] = map.get(key);
-      }
-    );
+    const values: MappedStateValues = {};
+    Array.from(this.map.entries()).forEach((data: MappedStateMapEntry) => {
+      const [key, map] = data;
+      values[key] = map.get(key);
+    });
     return [values, this.modifyMappedState];
   }
 
@@ -50,14 +53,14 @@ class ProtectedMap {
     return map;
   }
 
-  modifyMappedState(keys: any | [any], vals: any | [any]) {
+  modifyMappedState(keys: string | string[], vals: any | any[]) {
     const isBatched = Array.isArray(keys) && Array.isArray(vals);
     if (!isBatched) {
-      keys = [keys];
+      keys = [keys as string];
       vals = [vals];
     }
 
-    keys.forEach((key: string, idx: number) => {
+    (keys as string[]).forEach((key: string, idx: number) => {
       if (this.map.has(key)) {
         const innerMap = this.map.get(key);
         const setter = innerMap && innerMap.get('stateSetter');
